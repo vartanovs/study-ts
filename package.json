@@ -4,7 +4,7 @@
   "description": "Learn TypeScript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -18,8 +18,11 @@
   },
   "homepage": "https://github.com/vartanovs/learn-ts#readme",
   "devDependencies": {
+    "@types/jest": "24.0.25",
     "eslint": "6.8.0",
     "eslint-config-vartanovs-ts": "0.4.0",
+    "jest": "24.9.0",
+    "ts-jest": "24.2.0",
     "typescript": "3.7.4"
   }
 }
