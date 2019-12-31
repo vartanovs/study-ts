@@ -4,7 +4,9 @@
   "description": "Learn TypeScript",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "npm run test:lint && npm run test:unit",
+    "test:lint": "eslint src/**/*.ts",
+    "test:unit": "jest"
   },
   "repository": {
     "type": "git",

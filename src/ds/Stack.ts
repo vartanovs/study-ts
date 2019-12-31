@@ -7,7 +7,7 @@ class Stack<T> {
 
   [index: number]: T;
 
-  constructor( public height = 0) {}
+  constructor(public height = 0) {}
 
   isEmpty(): boolean {
     return !this.height;
