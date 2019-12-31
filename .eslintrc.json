@@ -1,0 +1,9 @@
+{
+  "extends": "vartanovs-ts",
+  "parserOptions": {
+    "project": [
+      "./tsconfig.json",
+      "./tsconfig.eslint.json"
+    ]
+  }
+}
