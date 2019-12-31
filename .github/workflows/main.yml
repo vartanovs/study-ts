@@ -1,0 +1,13 @@
+name: Pull Request Workflow
+
+on: pull_request
+    branches:
+        - master
+
+jobs:
+    build:
+        name: Lint
+        runs-on: ubuntu-latest
+        steps:
+            - run: npm install
+            - run: npm run test:lint
