@@ -12,7 +12,6 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - run: npm install
-            - run: ls -a
             - run: npm run test:lint
     unit_test:
         name: Unit Test
@@ -20,5 +19,4 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - run: npm install
-            - run: ls -a
             - run: npm run test:unit
