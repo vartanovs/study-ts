@@ -16,7 +16,7 @@ describe('src/ds/SLL', () => {
     expect(testSLL.tail).toBeNull();
   });
 
-  it('Adding to an empty SLL should result in the head and tail pointing to a new Node', () => {
+  it('Adding to an empty SLL should result in the head and tail pointing to the same new Node', () => {
     const testSLL: SLL = new SLL();
     testSLL.add(firstValue);
     expect(testSLL.head).toBeInstanceOf(SLLNode);

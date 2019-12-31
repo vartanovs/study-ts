@@ -3,7 +3,8 @@
  * @description Singly Linked List Node Class
  */
 
-class SLLNode<T = string | number> {
+class SLLNode<T = string | number
+> {
   constructor(
     public value: T,
     public next: SLLNode<T> | null = null
