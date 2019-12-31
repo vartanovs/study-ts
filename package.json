@@ -4,7 +4,8 @@
   "description": "Learn TypeScript",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test:lint && npm run test:unit",
+    "test": "npm run test:compile && npm run test:lint && npm run test:unit",
+    "test:compile": "tsc --noEmit",
     "test:lint": "eslint src/**/*.ts",
     "test:unit": "jest"
   },
