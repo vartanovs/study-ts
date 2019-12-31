@@ -3,7 +3,7 @@
  * @description Stack Class
  */
 
-class Stack<T> {
+class Stack<T = string | number> {
 
   [index: number]: T;
 
