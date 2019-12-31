@@ -4,7 +4,10 @@
   "description": "Learn TypeScript",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "npm run test:compile && npm run test:lint && npm run test:unit",
+    "test:compile": "tsc --noEmit",
+    "test:lint": "eslint src/**/*.ts",
+    "test:unit": "jest"
   },
   "repository": {
     "type": "git",

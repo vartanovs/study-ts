@@ -1,0 +1,29 @@
+name: PR Workflow
+
+on:
+    pull_request:
+        branches:
+            - master
+
+jobs:
+    compile:
+        name: Compile
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - run: npm install
+            - run: npm run test:compile
+    lint:
+        name: Lint
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - run: npm install
+            - run: npm run test:lint
+    unit_test:
+        name: Unit Test
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - run: npm install
+            - run: npm run test:unit
