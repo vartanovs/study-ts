@@ -46,7 +46,7 @@ describe('src/ds/SLL', () => {
     expect(testSLL.tail!.next).toBeNull();
   });
 
-  it('has(val) method returns true if a value is in the list', () => {
+  it('.has() returns true if a value is in the list', () => {
     const testSLL: SLL = new SLL();
     testSLL.add(firstValue);
     testSLL.add(secondValue);
@@ -60,7 +60,7 @@ describe('src/ds/SLL', () => {
     expect(testSLL.has(fifthValue)).toBeTruthy();
   });
 
-  it('has(val) method returns false if a value is not in the list', () => {
+  it('.has() returns false if a value is not in the list', () => {
     const testSLL: SLL = new SLL();
     expect(testSLL.has(firstValue)).toBeFalsy();
     testSLL.add(firstValue);
@@ -69,12 +69,12 @@ describe('src/ds/SLL', () => {
     expect(testSLL.has(missingValue)).toBeFalsy();
   });
 
-  it('delete(val) method returns null if no nodes in list', () => {
+  it('.delete() returns null if no nodes in list', () => {
     const testSLL: SLL = new SLL();
     expect(testSLL.delete(secondValue)).toBeNull();
   });
 
-  it('delete(val) method returns null if a value is not in the list', () => {
+  it('.delete() returns null if a value is not in the list', () => {
     const testSLL: SLL = new SLL();
     testSLL.add(firstValue);
     testSLL.add(secondValue);
@@ -84,7 +84,7 @@ describe('src/ds/SLL', () => {
     expect(testSLL.tail!.value).toEqual(thirdValue);
   });
 
-  it('delete(val) method deletes a node if a value is in the list', () => {
+  it('.delete() deletes a node if a value is in the list', () => {
     const testSLL: SLL = new SLL();
     testSLL.add(firstValue);
     testSLL.add(secondValue);
@@ -95,7 +95,7 @@ describe('src/ds/SLL', () => {
     expect(testSLL.tail!.value).toEqual(thirdValue);
   });
 
-  it('delete(val) method reassigns head and tail if single node list deleted', () => {
+  it('.delete() reassigns head and tail if single node list deleted', () => {
     const testSLL: SLL = new SLL();
     testSLL.add(firstValue);
     expect(testSLL.head!.value).toEqual(firstValue);
@@ -105,7 +105,7 @@ describe('src/ds/SLL', () => {
     expect(testSLL.tail).toBeNull();
   });
 
-  it('delete(val) method reassigns head if head node deleted', () => {
+  it('.delete() reassigns head if head node deleted', () => {
     const testSLL: SLL = new SLL();
     testSLL.add(firstValue);
     testSLL.add(secondValue);
@@ -115,7 +115,7 @@ describe('src/ds/SLL', () => {
     expect(testSLL.head!.value).toEqual(secondValue);
   });
 
-  it('delete(val) method reassigns tail if tail node deleted', () => {
+  it('.delete() reassigns tail if tail node deleted', () => {
     const testSLL: SLL = new SLL();
     testSLL.add(firstValue);
     testSLL.add(secondValue);

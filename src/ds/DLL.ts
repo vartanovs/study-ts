@@ -11,7 +11,7 @@ class DLL<T = string | number> {
     public tail: DLLNode<T> | null = null,
   ) {}
 
-  add(val: T) {
+  public add(val: T) {
     if (!this.head || !this.tail) {
       // If no nodes, set new Node to head and tail
       this.head = new DLLNode(val);
@@ -24,7 +24,7 @@ class DLL<T = string | number> {
     }
   }
 
-  has(val: T) {
+  public has(val: T) {
     // Declare a tracker to traverse the list and find the value
     let currNode = this.head;
     while (currNode) {
@@ -36,7 +36,7 @@ class DLL<T = string | number> {
   }
 
   // Delete first node with target value, return value if deleted, null if not found
-  delete(val: T) {
+  public delete(val: T) {
     if (!this.head) return null;
 
     // Edge Case - If head node contains the value, reassign head

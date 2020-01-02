@@ -11,7 +11,7 @@ class SLL<T = string | number> {
     public tail: SLLNode<T> | null = null
   ) {}
 
-  add(val: T) {
+  public add(val: T) {
     if (!this.head || !this.tail) {
       // If no nodes, set new Node to head and tail
       this.head = new SLLNode(val);
@@ -23,7 +23,7 @@ class SLL<T = string | number> {
     }
   }
 
-  has(val: T) {
+  public has(val: T) {
     // Declare a tracker to traverse the list and find the value
     let currNode = this.head;
     while (currNode) {
@@ -35,7 +35,7 @@ class SLL<T = string | number> {
   }
 
   // Delete first node with target value. Return value if deleted, null if not found
-  delete(val: T) {
+  public delete(val: T) {
     if (!this.head) return null;
 
     // Edge Case - If head node contains the value, reassign head
