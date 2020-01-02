@@ -17,7 +17,7 @@ class Orray<T = string | number> {
   }
 
   // Remove and returns the last element in an array
-  pop() {
+  public pop() {
     if (this.length === 0) return;
 
     this.length -= 1;
@@ -25,7 +25,7 @@ class Orray<T = string | number> {
   }
 
   // Add an element to the start of an array, returning array length
-  unshift(val: T) {
+  public unshift(val: T) {
     let tracker = this.length;
     while (tracker > 0) {
       this[tracker] = this[tracker - 1];
@@ -38,7 +38,7 @@ class Orray<T = string | number> {
   }
 
   // Remove and return the first element in an array
-  shift() {
+  public shift() {
     if (!this.length) return;
 
     const shiftedVal = this[0];
@@ -53,7 +53,7 @@ class Orray<T = string | number> {
   }
 
   // Find the first index at which a value can be found
-  indexOf(val: T) {
+  public indexOf(val: T) {
     let tracker = 0;
     while (tracker < this.length) {
       if (this[tracker] === val) return tracker;
@@ -64,7 +64,7 @@ class Orray<T = string | number> {
   }
 
   // Find the last index at which a value can be found
-  lastIndexOf(val: T) {
+  public lastIndexOf(val: T) {
     let tracker = this.length - 1;
     while (tracker >= 0) {
       if (this[tracker] === val) return tracker;
@@ -74,7 +74,7 @@ class Orray<T = string | number> {
   }
 
   // Return a shallow copy of a portion of an array
-  slice(begin: number = 0, end: number = this.length) {
+  public slice(begin: number = 0, end: number = this.length) {
     // Declare empty array to copy values into
     const newOrray = new Orray<T>();
 
@@ -104,7 +104,7 @@ class Orray<T = string | number> {
   }
 
   // Modify array, removing and returning existing elements and adding new elements
-  splice(start: number = this.length, delCount: number = this.length, ...args: (T)[]) {
+  public splice(start: number = this.length, delCount: number = this.length, ...args: (T)[]) {
     // Declare empty array to copy values into
     const newOrray = new Orray<T>();
 
