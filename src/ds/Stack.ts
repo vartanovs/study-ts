@@ -9,21 +9,21 @@ class Stack<T = string | number> {
 
   constructor(public height = 0) {}
 
-  isEmpty(): boolean {
+  public isEmpty(): boolean {
     return !this.height;
   }
 
-  peek() {
+  public peek() {
     return this.height ? this[this.height - 1] : undefined;
   }
 
-  push(val: T): number {
+  public push(val: T): number {
     this[this.height] = val;
     this.height += 1;
     return this.height;
   }
 
-  pop() {
+  public pop() {
     if (!this.height) return undefined;
     this.height -= 1;
     const temp = this[this.height];

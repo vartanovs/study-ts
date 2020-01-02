@@ -10,7 +10,7 @@ class BST {
     public right: BST | null = null,
   ) {}
 
-  add(val: number): void | Error {
+  public add(val: number): void | Error {
     if (val < this.value) {
       // If arg is smaller than existing node value, add to the left
       if (this.left) return this.left.add(val);
@@ -24,7 +24,7 @@ class BST {
     }
   }
 
-  has(val: number): boolean {
+  public has(val: number): boolean {
     if (val < this.value) {
       // If val is smaller than current Node value, recursively search left
       return this.left ? this.left.has(val) : false;

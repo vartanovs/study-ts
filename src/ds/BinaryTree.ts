@@ -10,7 +10,7 @@ class BinaryTree<T = string | number> {
     public right: BinaryTree<T> | null = null,
   ) {}
 
-  add(val: T) {
+  public add(val: T) {
     if (this.left === null) {
       this.left = new BinaryTree(val);
       return val;
@@ -46,7 +46,7 @@ class BinaryTree<T = string | number> {
     return val;
   }
 
-  has(val: T): boolean {
+  public has(val: T): boolean {
     if (this.value === val) return true;
     if (this.left && this.left.has(val)) return true;
     return this.right ? this.right.has(val) : false;
