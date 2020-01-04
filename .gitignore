@@ -4,5 +4,8 @@ node_modules/
 # Dependency lock file
 package-lock.json
 
+# IDE configuration
+.vscode
+
 # Test coverage directory
 coverage/
