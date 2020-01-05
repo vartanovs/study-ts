@@ -3,7 +3,7 @@ module.exports = {
   collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}'],  // Generate coverage report from src dir
   coverageDirectory: 'coverage',                      // Specify coverage report output dir
   roots: [ '<rootDir>/src' ],                         // All TS files are in the src directory
-  testRegex: '.+\.test\.tsx?$',                       // Look for file.test.ts/s files
+  testRegex: '.+\.test\.tsx?$',                       // Look for file.test.ts/x files
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest',                     // Specify use of ts-jest for all .ts/.tsx files
   },

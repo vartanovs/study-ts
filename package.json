@@ -4,16 +4,23 @@
   "description": "Learn TypeScript",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test:compile && npm run test:lint && npm run test:unit",
+    "test": "npm run test:compile && npm run test:coverage && npm run test:lint && npm run test:unit",
     "test:compile": "tsc --noEmit",
+    "test:coverage": "NODE_ENV=test jest --coverage",
     "test:lint": "eslint src/**/*.ts",
-    "test:unit": "jest"
+    "test:unit": "NODE_ENV=test jest",
+    "test:watch": "NODE_ENV=test jest --watch"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vartanovs/learn-ts.git"
   },
-  "keywords": [],
+  "keywords": [
+    "algorithms",
+    "data",
+    "structures",
+    "typescript"
+  ],
   "author": "Serge Vartanov <vartanov.s@gmail.com>",
   "license": "MIT",
   "bugs": {
