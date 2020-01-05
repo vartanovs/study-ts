@@ -54,7 +54,8 @@ describe('src/csmc/00', () => {
     expect(isSubsequence('hello', 'hello world')).toBeTruthy();
     expect(isSubsequence('sing', 'sting')).toBeTruthy();
     expect(isSubsequence('abc', 'abracadabra')).toBeTruthy();
-    expect(isSubsequence('abc', 'acb')).toBeFalsy();
+    expect(isSubsequence('cat', 'act')).toBeFalsy();
+    expect(isSubsequence('cat', 'actac')).toBeFalsy();
   });
 
   it('Challenge 007 - Max Subarray Sum', () => {

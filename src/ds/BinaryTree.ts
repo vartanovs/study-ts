@@ -30,14 +30,14 @@ class BinaryTree<T = string | number> {
         queue.push(currNode.left);
       } else {
         currNode.left = new BinaryTree(val);
-        return val;
+        break;
       }
 
       if (currNode.right instanceof BinaryTree) {
         queue.push(currNode.right);
       } else {
         currNode.right = new BinaryTree(val);
-        return val;
+        break;
       }
 
       index += 1;
