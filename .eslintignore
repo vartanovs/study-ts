@@ -1,2 +1,5 @@
 # Ignore Test Config
 jest.config.js
+
+# Ignore React Dir
+src/react

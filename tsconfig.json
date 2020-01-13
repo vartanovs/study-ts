@@ -38,7 +38,8 @@
     "exclude": [
       "build",                                    // Do not compile compiled files
       "node_modules",                             // Do not compile dependencies
-      "./src/**/*.test.ts"                        // Do not compile test files
+      "./src/**/*.test.ts",                       // Do not compile test files
+      "./src/react"                               // Do not compile react module
     ],
     "include": [
       "./src/**/*.ts"                             // Compile all source code .ts files

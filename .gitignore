@@ -1,3 +1,9 @@
+# Build directory
+dist/
+
+# Cache
+.cache/
+
 # Dependency directory
 node_modules/
 
