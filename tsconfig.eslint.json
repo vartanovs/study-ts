@@ -2,6 +2,7 @@
   "extends": "./tsconfig.json",  // Extend root tsconfig
   "exclude": [],
   "include": [
-    "./src/**/*.test.ts"        // Include all ts test files
+    "./src/**/*.test.ts",       // Include all ts test files
+    "./src/**/*.test.tsx"       // Include all tsx test files
   ]
 }

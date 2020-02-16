@@ -42,7 +42,8 @@
       "./src/react"                               // Do not compile react module
     ],
     "include": [
-      "./src/**/*.ts"                             // Compile all source code .ts files
+      "./src/**/*.ts",                            // Compile all source code .ts files
+      "./src/**/*.tsx"                            // Compile all source code .tsx files
     ]
   }
   
