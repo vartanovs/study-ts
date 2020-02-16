@@ -1,5 +1,7 @@
 import { Action } from 'redux';
 
+export type Filter = 'all' | 'active' | 'completed';
+
 export interface Todo {
   id: string;
   text: string;

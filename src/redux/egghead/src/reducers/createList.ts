@@ -1,5 +1,5 @@
 import { combineReducers, Reducer } from 'redux';
-import { NormalizedAction } from '../types';
+import { NormalizedAction, Filter } from '../types';
 
 export interface State {
   errorMessage: string;
@@ -7,12 +7,12 @@ export interface State {
   isFetching: boolean;
 }
 
-const createList = (filter: string) => {
+const createList = (filter: Filter) => {
   const errorMessage: Reducer<string|null, NormalizedAction> = (state = null, action) => {
     if (action.filter !== filter) return state;
     switch (action.type) {
       case 'FETCH_TODOS_FAILURE':
-        return action.message;
+        return action.message as string;
       case 'FETCH_TODOS_REQUEST':
       case 'FETCH_TODOS_SUCCESS':
         return null;
@@ -21,9 +21,10 @@ const createList = (filter: string) => {
     }
   };
 
-  const handleToggle: Reducer<string[], NormalizedAction> = (state, action) => {
+  const handleToggle: Reducer<string[], NormalizedAction> = (state = [], action) => {
+    if (!action || !action.response || typeof action.response.result !== 'string') return state;
     const { result: toggleId, entities } = action.response;
-    const { completed } = entities.todos[toggleId as string];
+    const { completed } = entities.todos[toggleId];
     const shouldRemove = (completed && filter === 'active') || (!completed && filter === 'completed');
     return shouldRemove ? state.filter((id) => id !== toggleId) : state;
   };

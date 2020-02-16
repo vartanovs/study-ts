@@ -32,7 +32,7 @@ const todosReducer: Reducer = (state: Todo[] = [], action) => {
 };
 
 const testAddTodo = () => {
-  const stateBefore = [];
+  const stateBefore: Todo[] = [];
   const stateAfter = [
     {
       id: 0,

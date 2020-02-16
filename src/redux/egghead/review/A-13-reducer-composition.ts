@@ -1,45 +1,44 @@
 import deepFreeze from 'deep-freeze';
 import expect from 'expect';
 import { Reducer } from 'redux';
-import { Todo } from './types';
+import { Todo, AddTodoAction, AppAction, TodoAction, ToggleTodoAction, VisibilityFilterAction } from './types';
 
 interface AppState {
   todos: Todo[];
   visibilityFilter: string;
 }
 
-const todoReducer: Reducer<Todo> = (state: Todo, action) => {
+const todoReducer: Reducer<Todo|undefined, TodoAction> = (state, action) => {
   switch (action.type) {
     case 'ADD_TODO':
       return {
         id: action.id,
-        text: action.text,
+        text: (action as AddTodoAction).text,
         completed: false,
       };
     case 'TOGGLE_TODO':
-      if (state.id !== action.id) return state;
+      if (!state || state.id !== action.id) return state;
       return { ...state, completed: !state.completed };
     default:
       return state;
   }
 };
 
-const todosReducer: Reducer<Todo[]> = (state = [], action) => {
+const todosReducer: Reducer<Todo[], TodoAction> = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TODO':
       return [
         ...state,
-        todoReducer(undefined, action),
+        todoReducer(undefined, action) as Todo,
       ];
     case 'TOGGLE_TODO':
-      return state.map((todo) => todoReducer(todo, action));
-
+      return state.map((todo) => todoReducer(todo, action) as Todo);
     default:
       return state;
   }
 };
 
-const visibilityReducer: Reducer<string> = (state = 'SHOW_ALL', action) => {
+const visibilityReducer: Reducer<string, VisibilityFilterAction> = (state = 'SHOW_ALL', action) => {
   switch (action.type) {
     case 'SET_VISIBILITY_FILTER':
       return action.filter;
@@ -48,14 +47,14 @@ const visibilityReducer: Reducer<string> = (state = 'SHOW_ALL', action) => {
   }
 };
 
-const todoApp: Reducer<Partial<AppState>> = (state = {}, action) => ({
-  todos: todosReducer(state.todos, action),
-  visibilityFilter: visibilityReducer(state.visibilityFilter, action),
+const todoApp: Reducer<Partial<AppState>, AppAction> = (state = {}, action) => ({
+  todos: todosReducer(state.todos, action as TodoAction),
+  visibilityFilter: visibilityReducer(state.visibilityFilter, action as VisibilityFilterAction),
 });
 
 const testAddTodo = () => {
-  const stateBefore = [];
-  const stateAfter = [
+  const stateBefore: Todo[] = [];
+  const stateAfter: Todo[] = [
     {
       id: 0,
       text: 'Learn Redux',
@@ -63,7 +62,7 @@ const testAddTodo = () => {
     },
   ];
 
-  const action = {
+  const action: AddTodoAction = {
     type: 'ADD_TODO',
     id: 0,
     text: 'Learn Redux',
@@ -76,7 +75,7 @@ const testAddTodo = () => {
 };
 
 const testToggleTodo = () => {
-  const stateBefore = [
+  const stateBefore: Todo[] = [
     {
       id: 0,
       text: 'Learn Redux',
@@ -89,7 +88,7 @@ const testToggleTodo = () => {
     },
   ];
 
-  const stateAfter = [
+  const stateAfter: Todo[] = [
     {
       id: 0,
       text: 'Learn Redux',
@@ -102,7 +101,7 @@ const testToggleTodo = () => {
     },
   ];
 
-  const action = {
+  const action: ToggleTodoAction = {
     type: 'TOGGLE_TODO',
     id: 1,
   };
@@ -114,7 +113,7 @@ const testToggleTodo = () => {
 };
 
 const testVisibilityFilter = () => {
-  const stateBefore = {
+  const stateBefore: AppState = {
     todos: [
       {
         id: 0,
@@ -130,7 +129,7 @@ const testVisibilityFilter = () => {
     visibilityFilter: 'SHOW_ALL',
   };
 
-  const stateAfter = {
+  const stateAfter: AppState = {
     todos: [
       {
         id: 0,
@@ -146,7 +145,7 @@ const testVisibilityFilter = () => {
     visibilityFilter: 'SHOW_COMPLETED',
   };
 
-  const action = {
+  const action: VisibilityFilterAction = {
     type: 'SET_VISIBILITY_FILTER',
     filter: 'SHOW_COMPLETED',
   };

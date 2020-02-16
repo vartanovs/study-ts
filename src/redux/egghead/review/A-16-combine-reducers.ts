@@ -8,8 +8,9 @@ import { ReducersMapObject, AnyAction } from 'redux';
 // ... getting the reducer (`reducers[key]`) and prevState (`state[key]`) at each key  ...
 // ... and generating the nextState for each key by calling the appropriate reducer for each key
 
-const combineReducers = (reducers: ReducersMapObject) => (state: unknown = {}, action: AnyAction) => Object.keys(reducers)
-  .reduce((nextState, key) => {
+// eslint-disable-next-line
+const combineReducers = (reducers: ReducersMapObject<any, AnyAction>) => (state: any = {}, action: AnyAction) => Object.keys(reducers)
+  .reduce((nextState: any, key) => { // eslint-disable-line
     nextState[key] = reducers[key](state[key], action);
     return nextState;
   }, {});

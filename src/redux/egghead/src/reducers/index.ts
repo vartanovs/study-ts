@@ -1,13 +1,12 @@
 import { combineReducers } from 'redux';
 import byId, * as fromById from './byId';
 import createList, * as fromCreateList from './createList';
+import { Filter } from '../types';
 
 export interface State {
   byId: fromById.State;
   listByFilter: {
-    all: fromCreateList.State;
-    active: fromCreateList.State;
-    completed: fromCreateList.State;
+    [F in Filter]: fromCreateList.State;
   };
 }
 
@@ -24,11 +23,11 @@ const todos = combineReducers({
 
 export default todos;
 
-export const getErrorMessage = (state: State, filter: string) => fromCreateList.getErrorMessage(state.listByFilter[filter]);
+export const getErrorMessage = (state: State, filter: Filter) => fromCreateList.getErrorMessage(state.listByFilter[filter]);
 
-export const getIsFetching = (state: State, filter: string) => fromCreateList.getIsFetching(state.listByFilter[filter]);
+export const getIsFetching = (state: State, filter: Filter) => fromCreateList.getIsFetching(state.listByFilter[filter]);
 
-export const getVisibleTodos = (state: State, filter: string) => {
+export const getVisibleTodos = (state: State, filter: Filter) => {
   const ids = fromCreateList.getIds(state.listByFilter[filter]);
   return ids.map((id: string) => fromById.getTodo(state.byId, id));
 };

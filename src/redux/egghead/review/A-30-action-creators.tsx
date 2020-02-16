@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { connect, DispatchProp, Provider, MapDispatchToProps, MapStateToProps } from 'react-redux';
 import { combineReducers, createStore, Dispatch, Reducer } from 'redux';
 
-import { Todo as ITodo } from './types';
+import { Todo as ITodo, AddTodoAction, TodoAction, VisibilityFilterAction } from './types';
 
 // -- ACTION CREATORS -- //
 let nextTodoId = 0;
@@ -14,38 +14,38 @@ const setVisibilityFilter = (filter: string) => ({ type: 'SET_VISIBILITY_FILTER'
 const toggleTodo = (id: number) => ({ type: 'TOGGLE_TODO', id });
 
 // -- REDUCERS -- //
-const todoReducer: Reducer<ITodo> = (state, action) => {
+const todoReducer: Reducer<ITodo|undefined, TodoAction> = (state, action) => {
   switch (action.type) {
     case 'ADD_TODO':
       return {
         id: action.id,
-        text: action.text,
+        text: (action as AddTodoAction).text,
         completed: false,
       };
     case 'TOGGLE_TODO':
-      if (state.id !== action.id) return state;
+      if (!state || state.id !== action.id) return state;
       return { ...state, completed: !state.completed };
     default:
       return state;
   }
 };
 
-const todosReducer: Reducer<ITodo[]> = (state = [], action) => {
+const todosReducer: Reducer<ITodo[], TodoAction> = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TODO':
       return [
         ...state,
-        todoReducer(undefined, action),
+        todoReducer(undefined, action) as ITodo,
       ];
     case 'TOGGLE_TODO':
-      return state.map((todo) => todoReducer(todo, action));
+      return state.map((todo) => todoReducer(todo, action) as ITodo);
 
     default:
       return state;
   }
 };
 
-const visibilityReducer = (state = 'SHOW_ALL', action) => {
+const visibilityReducer: Reducer<string, VisibilityFilterAction> = (state = 'SHOW_ALL', action) => {
   switch (action.type) {
     case 'SET_VISIBILITY_FILTER':
       return action.filter;
@@ -130,11 +130,11 @@ const TodoList: React.FC<TodoListProps> = ({ onTodoClick, todos }: TodoListProps
 );
 
 // -- CONTAINER COMPONENTS -- //
-let AddTodo: React.FC<{ dispatch?: Dispatch }> = ({ dispatch }: DispatchProp) => {
+const AddTodo: React.FC<{ dispatch: Dispatch }> = ({ dispatch }: DispatchProp) => {
   let input: HTMLInputElement;
   return (
     <div>
-      <input ref={(node) => input = node} />
+      <input ref={(node) => input = node!} />
       <button onClick={() => {
         dispatch(addTodo(input.value));
         input.value = ''; // clear input field
@@ -144,7 +144,7 @@ let AddTodo: React.FC<{ dispatch?: Dispatch }> = ({ dispatch }: DispatchProp) =>
     </div>
   );
 };
-AddTodo = connect()(AddTodo); // Returns just 'dispatch' as an injected prop
+const AddTodoConnected = connect()(AddTodo); // Returns just 'dispatch' as an injected prop
 
 interface AppState {
   todos: ITodo[];
@@ -174,7 +174,7 @@ const VisibleTodoList = connect(mapStateToTodoListProps, mapDispatchToTodoListPr
 
 const TodoApp: React.FC<{}> = () => (
   <div>
-    <AddTodo />
+    <AddTodoConnected />
     <VisibleTodoList />
     <Footer />
   </div>

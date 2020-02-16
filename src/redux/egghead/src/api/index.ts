@@ -1,4 +1,5 @@
 import { v4 } from 'uuid';
+import { Todo } from '../types';
 
 const API_DELAY = 500;
 const ERROR_RATE = 0.2;
@@ -23,7 +24,7 @@ const fakeDatabase = {
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-export const fetchTodos = (filter) => delay(API_DELAY)
+export const fetchTodos = (filter: string) => delay(API_DELAY)
   .then(() => {
     if (Math.random() <= ERROR_RATE) throw new Error('Fetch call failed.');
 
@@ -52,7 +53,7 @@ export const addTodo = (text: string) => delay(API_DELAY)
 
 export const toggleTodo = (id: string) => delay(API_DELAY)
   .then(() => {
-    const selectedTodo = fakeDatabase.todos.find((todo) => todo.id === id);
+    const selectedTodo = fakeDatabase.todos.find((todo) => todo.id === id) as Todo;
     selectedTodo.completed = !selectedTodo.completed;
     return selectedTodo;
   });

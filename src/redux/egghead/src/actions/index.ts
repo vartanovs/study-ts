@@ -4,7 +4,8 @@ import { Dispatch } from 'redux';
 import * as api from '../api';
 import * as schema from './schema';
 
-import { getIsFetching } from '../reducers';
+import { getIsFetching, State } from '../reducers';
+import { Filter } from '../types';
 
 export const addTodo = (text: string) => (dispatch: Dispatch) => api
   .addTodo(text)
@@ -14,7 +15,7 @@ export const toggleTodo = (id: string) => (dispatch: Dispatch) => api
   .toggleTodo(id)
   .then((response) => dispatch({ type: 'TOGGLE_TODOS_SUCCESS', response: normalize(response, schema.todo) }));
 
-export const fetchTodos = (filter) => (dispatch, getState) => {
+export const fetchTodos = (filter: Filter) => (dispatch: Dispatch, getState: () => State) => {
   if (getIsFetching(getState(), filter)) return Promise.resolve(); // Don't dispatch if already fetching
 
   dispatch({ type: 'FETCH_TODOS_REQUEST', filter });

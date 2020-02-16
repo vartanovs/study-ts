@@ -8,12 +8,12 @@ import * as actions from '../actions';
 import FetchError from './FetchError';
 import TodoList from './TodoList';
 
-import { Todo } from '../types';
+import { Todo, Filter } from '../types';
 
 interface VisibleTodoListProps {
   errorMessage: string;
-  fetchTodos: (filter: string) => void;
-  filter: string;
+  fetchTodos: (filter: Filter) => void;
+  filter: Filter;
   isFetching: boolean;
   toggleTodo: (id: string) => void;
   todos: Todo[];
@@ -45,12 +45,12 @@ class VisibleTodoList extends Component<VisibleTodoListProps> {
 
 interface VisibleTodoListStateProps {
   errorMessage: string;
-  filter: string;
+  filter: Filter;
   isFetching: boolean;
   todos: Todo[];
 }
 
-interface VisibleTodoListOwnProps { match: { params: { filter?: string } } }
+interface VisibleTodoListOwnProps { match: { params: { filter?: Filter } } }
 
 const mapStateToProps: MapStateToProps<VisibleTodoListStateProps, VisibleTodoListOwnProps, State> = (state, ownProps) => {
   const filter = ownProps.match.params.filter || 'all';

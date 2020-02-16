@@ -4,7 +4,7 @@ import { connect, DispatchProp } from 'react-redux';
 
 import { addTodo } from '../actions';
 
-const AddTodo: React.FC<{ dispatch?: Dispatch }> = ({ dispatch }: DispatchProp) => {
+const AddTodo: React.FC<{ dispatch: Dispatch }|undefined> = ({ dispatch }: DispatchProp) => {
   let input: HTMLInputElement;
 
   return (
@@ -18,7 +18,7 @@ const AddTodo: React.FC<{ dispatch?: Dispatch }> = ({ dispatch }: DispatchProp) 
           input.value = ''; // Clear input field
         }}
       >
-        <input ref={(node) => { input = node; }} />
+        <input ref={(node) => input = node! } />
         <button type="submit">
           Add Todo
         </button>
