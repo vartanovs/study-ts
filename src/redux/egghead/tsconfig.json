@@ -1,0 +1,12 @@
+{
+  "extends": "../../../tsconfig.json",  // Extend root tsconfig
+  "compilerOptions": {
+    "jsx": "react"
+  },
+  "include": [
+    "./review/**/*.test.ts",
+    "./review/**/*.test.tsx",
+    "./src/**/*.test.ts",
+    "./src/**/*.test.tsx"
+  ]
+}
