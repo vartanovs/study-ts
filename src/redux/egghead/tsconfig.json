@@ -1,0 +1,9 @@
+{
+  "extends": "../../../tsconfig.json",  // Extend root tsconfig
+  "include": [
+    "./review/**/*.test.ts",
+    "./review/**/*.test.tsx",
+    "./src/**/*.test.ts",
+    "./src/**/*.test.tsx"
+  ]
+}

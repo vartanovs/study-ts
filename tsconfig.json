@@ -20,7 +20,7 @@
       "target": "es6",                            // Target ES2015 during compilation
       "tsBuildInfoFile": ".cache/.tsbuildinfo",   // Target file for incremental build information
   
-      // "jsx": "react",                             // Support JSX in .tsx files
+      "jsx": "react",                             // Support JSX in .tsx files
   
       "alwaysStrict": true,                       // Emit "use Strict" for each source file
       "esModuleInterop": true,                    // Enable implicit default imports/exports
@@ -42,7 +42,8 @@
       "./src/react"                               // Do not compile react module
     ],
     "include": [
-      "./src/**/*.ts"                             // Compile all source code .ts files
+      "./src/**/*.ts",                            // Compile all source code .ts files
+      "./src/**/*.tsx"                            // Compile all source code .tsx files
     ]
   }
   

@@ -1,32 +1,13 @@
 {
-  "name": "learn-ts",
+  "name": "egghead",
   "version": "1.0.0",
-  "description": "Learn TypeScript",
+  "description": "Getting Started with Redux",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test:compile && npm run test:coverage && npm run test:lint && npm run test:unit",
-    "test:compile": "tsc --noEmit",
-    "test:coverage": "NODE_ENV=test jest --coverage",
-    "test:lint": "eslint src/**/*.ts",
-    "test:unit": "NODE_ENV=test jest",
-    "test:watch": "NODE_ENV=test jest --watch"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vartanovs/learn-ts.git"
-  },
-  "keywords": [
-    "algorithms",
-    "data",
-    "structures",
-    "typescript"
-  ],
   "author": "Serge Vartanov <vartanov.s@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/vartanovs/learn-ts/issues"
-  },
-  "homepage": "https://github.com/vartanovs/learn-ts#readme",
   "dependencies": {
     "deep-freeze": "0.0.1",
     "expect": "24.9.0",
@@ -49,7 +30,6 @@
     "@babel/preset-react": "7.8.3",
     "@babel/preset-typescript": "7.8.3",
     "@types/deep-freeze": "0.1.2",
-    "@types/jest": "24.0.25",
     "@types/lodash": "4.14.149",
     "@types/node": "13.7.1",
     "@types/react": "16.9.19",
@@ -60,14 +40,8 @@
     "@types/redux-logger": "3.0.7",
     "@types/uuid": "3.4.7",
     "babel-loader": "8.0.6",
-    "eslint": "6.8.0",
-    "eslint-config-vartanovs-ts": "0.4.0",
-    "eslint-plugin-react": "7.18.3",
     "html-loader": "0.5.5",
     "html-webpack-plugin": "3.2.0",
-    "jest": "24.9.0",
-    "ts-jest": "24.2.0",
-    "typescript": "3.7.5",
     "webpack": "4.41.5",
     "webpack-cli": "3.3.10",
     "webpack-dev-server": "3.10.3"

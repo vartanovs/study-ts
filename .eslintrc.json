@@ -1,5 +1,5 @@
 {
-  "extends": "vartanovs-ts",
+  "extends": ["vartanovs-ts", "plugin:react/recommended"],
   "parserOptions": {
     "project": [
       "./tsconfig.json",
