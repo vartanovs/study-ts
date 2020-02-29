@@ -4,26 +4,49 @@
   "description": "Frontend Masters Intro to React v5",
   "main": "index.js",
   "scripts": {
+    "build": "parcel build --public-url ./dist/ src/index.html",
+    "clear": "rm -rf .cache/ /dist",
     "dev": "parcel src/index.html",
+    "dev:mock": "cross-env PET_MOCK=mock parcel src/index.html",
     "format": "prettier \"src/**/*.{js,jsx,html}\" --write",
     "lint": "eslint \"./src/**/*.{js,jsx}\" --quiet",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run build && babel-node server/index.js",
+    "test": "jest"
   },
   "keywords": [],
   "author": "Serge Vartanov <vartanov.s@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@emotion/core": "10.0.27",
+    "@frontendmasters/pet": "1.0.3",
+    "@reach/router": "1.3.1",
     "react": "16.12.0",
     "react-dom": "16.12.0"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.3",
+    "@testing-library/react": "9.4.1",
+    "@types/jest": "25.1.3",
+    "@types/reach__router": "1.3.0",
+    "@types/react": "16.9.23",
+    "@types/react-dom": "16.9.5",
+    "@types/testing-library__react": "9.1.2",
+    "babel-eslint": "10.0.3",
+    "cross-env": "7.0.0",
     "eslint": "6.8.0",
     "eslint-config-prettier": "6.9.0",
-    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-import": "2.20.0",
     "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-react": "7.17.0",
+    "eslint-plugin-react-hooks": "2.4.0",
+    "jest": "25.1.0",
     "parcel-bundler": "1.12.4",
-    "prettier": "1.19.1"
-  }
+    "prettier": "1.19.1",
+    "ts-jest": "25.2.1",
+    "typescript": "3.8.2"
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions"
+  ]
 }

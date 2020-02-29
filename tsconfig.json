@@ -9,7 +9,6 @@
         "esnext"                                  // Include latest ES library during compilation
       ],
       "declaration": true,                        // Emit definitions file upon compilation
-      "incremental": true,                        // Enable incremental compilation
       "inlineSourceMap": true,                    // Emit single file with source map
       "inlineSources": true,                      // Emit source alongside source map
       "module": "commonjs",                       // Enforce Node.js standard module code generation
@@ -18,7 +17,6 @@
       "removeComments": true,                     // Do not emit comments during compilation
       "rootDir": "src",                           // Specify input file root directory
       "target": "es6",                            // Target ES2015 during compilation
-      "tsBuildInfoFile": ".cache/.tsbuildinfo",   // Target file for incremental build information
   
       "jsx": "react",                             // Support JSX in .tsx files
   
@@ -39,7 +37,6 @@
       "build",                                    // Do not compile compiled files
       "node_modules",                             // Do not compile dependencies
       "./src/**/*.test.ts",                       // Do not compile test files
-      "./src/react"                               // Do not compile react module
     ],
     "include": [
       "./src/**/*.ts",                            // Compile all source code .ts files
