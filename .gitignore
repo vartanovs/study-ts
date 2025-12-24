@@ -4,6 +4,7 @@ build/
 
 # Cache
 .cache/
+.parcel-cache/
 
 # Dependency directory
 node_modules/
