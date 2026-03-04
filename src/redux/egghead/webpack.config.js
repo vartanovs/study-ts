@@ -29,7 +29,7 @@ module.exports = {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'src'),
+    static: path.resolve(__dirname, 'src'),
     hot: true
   }
 };
