@@ -39,7 +39,7 @@ describe('src/ds/BST', () => {
   it('BUT duplicate additions should result in an error', () => {
     const testBST = new BST(5);
     testBST.add(3);
-    expect(() => testBST.add(3)).toThrowError();
+    expect(() => testBST.add(3)).toThrow();
   });
 
   it('BST should confirm that nodes with specified values are in the tree', () => {
