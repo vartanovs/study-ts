@@ -14,7 +14,7 @@ const Modal: React.FC = ({ children }) => {
     const modalRoot = document.getElementById('modal');
     if (modalRoot && elementRef.current) {
       modalRoot.appendChild(elementRef.current);
-      return () => modalRoot.removeChild(elementRef.current!);
+      return () => { modalRoot.removeChild(elementRef.current!); };
     }
     return () => {};
   }, []);
