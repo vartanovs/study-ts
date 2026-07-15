@@ -1,10 +1,10 @@
 // import { throttle } from 'lodash';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, Store } from 'redux';
 import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 
 // import { loadState, saveState } from './localStorage'
-import todoApp from './reducers';
+import todoApp, { State } from './reducers';
 
 // const THROTTLE_MS = 1000;
 
@@ -12,7 +12,7 @@ import todoApp from './reducers';
 //   ? action(store.dispatch, store.getState)
 //   : next(action);
 
-const configureStore = () => {
+const configureStore = (): Store<State> => {
   // const persistedState = loadState();
 
   const middleware = [];

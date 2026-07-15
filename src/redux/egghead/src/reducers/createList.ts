@@ -2,7 +2,7 @@ import { combineReducers, Reducer } from 'redux';
 import { NormalizedAction, Filter } from '../types';
 
 export interface State {
-  errorMessage: string;
+  errorMessage: string | null;
   ids: string[];
   isFetching: boolean;
 }

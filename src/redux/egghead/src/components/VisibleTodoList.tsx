@@ -11,7 +11,7 @@ import TodoList from './TodoList';
 import { Todo, Filter } from '../types';
 
 interface VisibleTodoListProps {
-  errorMessage: string;
+  errorMessage: string | null;
   fetchTodos: (filter: Filter) => void;
   filter: Filter;
   isFetching: boolean;
@@ -44,7 +44,7 @@ class VisibleTodoList extends Component<VisibleTodoListProps> {
 }
 
 interface VisibleTodoListStateProps {
-  errorMessage: string;
+  errorMessage: string | null;
   filter: Filter;
   isFetching: boolean;
   todos: Todo[];
